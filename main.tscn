@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://q88g46xpfxow"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_4jlnr"]
+[ext_resource type="Texture2D" uid="uid://bvvuna025i7uv" path="res://assert/背景.png" id="1_tmsqi"]
+[ext_resource type="Texture2D" uid="uid://cbnrdfvxpy4xm" path="res://assert/抽奖机器.png" id="2_mfdi2"]
+[ext_resource type="VideoStream" path="res://assert/抽奖.ogv" id="4_nu5r3"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4jlnr")
+
+[node name="guo" type="VideoStreamPlayer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -88.0
+offset_right = 1248.0
+offset_bottom = 728.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_nu5r3")
+expand = true
+
+[node name="机器" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="机器"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tmsqi")
+expand_mode = 1
+
+[node name="抽奖机器" type="Sprite2D" parent="机器"]
+position = Vector2(544, 312)
+texture = ExtResource("2_mfdi2")
+
+[node name="Button" type="Button" parent="机器"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 800.0
+offset_top = 152.0
+offset_right = 840.0
+offset_bottom = 344.0
+
+[connection signal="finished" from="guo" to="." method="_on_guo_finished"]
+[connection signal="pressed" from="机器/Button" to="." method="_on_button_pressed"]

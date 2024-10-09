@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://5s0085n3tpma"]
+
+[ext_resource type="Script" path="res://kaijiang.gd" id="1_w8ag3"]
+[ext_resource type="VideoStream" path="res://assert/抽奖.ogv" id="2_wajwb"]
+[ext_resource type="Texture2D" uid="uid://dovmutth4drwo" path="res://assert/灯光.png" id="3_m4kec"]
+[ext_resource type="Texture2D" uid="uid://bxsaofa6xani3" path="res://assert/开奖.png" id="4_77v3d"]
+[ext_resource type="Texture2D" uid="uid://b0gtql3xppq5l" path="res://assert/蛋壳上.png" id="5_e14ht"]
+[ext_resource type="Texture2D" uid="uid://cpuxl4muq0px4" path="res://assert/蛋壳下.png" id="6_dxebw"]
+
+[sub_resource type="Gradient" id="Gradient_wipgt"]
+offsets = PackedFloat32Array(0, 0.490323, 0.974194)
+colors = PackedColorArray(0.92549, 0.839216, 0.352941, 1, 0.854902, 0.65098, 0.196078, 1, 0.819608, 0.529412, 0.168627, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3p2ws"]
+gradient = SubResource("Gradient_wipgt")
+width = 65
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 14
+
+[sub_resource type="Environment" id="Environment_vpraq"]
+adjustment_enabled = true
+
+[sub_resource type="Animation" id="Animation_u2c87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("蛋壳上:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(592, 328)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("蛋壳下:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(608, 312)]
+}
+
+[sub_resource type="Animation" id="Animation_7bscd"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("蛋壳上:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(592, 328), Vector2(1064, -144)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("蛋壳下:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(608, 312), Vector2(240, 824)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t4t75"]
+_data = {
+"RESET": SubResource("Animation_u2c87"),
+"start": SubResource("Animation_7bscd")
+}
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_w8ag3")
+
+[node name="guo" type="VideoStreamPlayer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -88.0
+offset_right = 1248.0
+offset_bottom = 728.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_wajwb")
+expand = true
+
+[node name="机器" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="机器"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3p2ws")
+expand_mode = 1
+
+[node name="灯光" type="TextureRect" parent="机器"]
+visible = false
+texture_filter = 2
+layout_mode = 0
+offset_left = 48.0001
+offset_top = -56.0
+offset_right = 415.0
+offset_bottom = 313.0
+scale = Vector2(2.79819, 2.21426)
+texture = ExtResource("3_m4kec")
+
+[node name="开奖" type="Sprite2D" parent="机器"]
+position = Vector2(601, 344)
+scale = Vector2(0.609706, 0.605)
+texture = ExtResource("4_77v3d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="机器"]
+environment = SubResource("Environment_vpraq")
+
+[node name="蛋壳上" type="Sprite2D" parent="."]
+position = Vector2(592, 328)
+rotation = 0.523599
+scale = Vector2(1.33663, 1.34211)
+texture = ExtResource("5_e14ht")
+
+[node name="蛋壳下" type="Sprite2D" parent="."]
+position = Vector2(608, 312)
+rotation = 0.523599
+scale = Vector2(1.36432, 1.66968)
+texture = ExtResource("6_dxebw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_t4t75")
+}
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 512.0
+offset_right = 1119.0
+offset_bottom = 616.0
+
+[connection signal="finished" from="guo" to="." method="_on_guo_finished" flags=18]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
