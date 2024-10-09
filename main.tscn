@@ -7,28 +7,33 @@
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_4jlnr")
 
 [node name="guo" type="VideoStreamPlayer" parent="."]
 unique_name_in_owner = true
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -152.0
-offset_top = -88.0
-offset_right = 1248.0
-offset_bottom = 728.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("4_nu5r3")
-expand = true
 
 [node name="机器" type="Control" parent="."]
+layout_mode = 2
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="机器"]
 layout_mode = 1
@@ -49,10 +54,21 @@ texture = ExtResource("2_mfdi2")
 
 [node name="Button" type="Button" parent="机器"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 800.0
 offset_top = 152.0
 offset_right = 840.0
 offset_bottom = 344.0
 
+[node name="add" type="Button" parent="机器"]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 552.0
+offset_right = 1120.0
+offset_bottom = 624.0
+text = "add
+"
+
 [connection signal="finished" from="guo" to="." method="_on_guo_finished"]
 [connection signal="pressed" from="机器/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="机器/add" to="." method="_on_add_pressed"]

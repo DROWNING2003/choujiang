@@ -1,0 +1,214 @@
+[gd_scene load_steps=25 format=3 uid="uid://c3a0ooecubmbm"]
+
+[ext_resource type="Texture2D" uid="uid://bvvuna025i7uv" path="res://assert/背景.png" id="1_phinq"]
+[ext_resource type="Script" path="res://add.gd" id="1_r0a48"]
+[ext_resource type="Texture2D" uid="uid://chk5uo7l2pxsu" path="res://assert/res.png" id="3_lg2iv"]
+[ext_resource type="Texture2D" uid="uid://bplme5avm2ebc" path="res://assert/气泡.png" id="4_poqp8"]
+[ext_resource type="FontFile" uid="uid://dywsc227slsyb" path="res://assert/ChillRoundGothic_Bold.otf" id="4_wdu4v"]
+[ext_resource type="StyleBox" uid="uid://cqalksrurgkwu" path="res://green.tres" id="5_cn4qv"]
+[ext_resource type="FontFile" uid="uid://cok50m6qofl8r" path="res://assert/ChillRoundGothic_Normal.otf" id="5_kuro1"]
+[ext_resource type="Texture2D" uid="uid://bbmwx6sn5ukyc" path="res://assert/icon1.png" id="5_lmqb4"]
+[ext_resource type="Texture2D" uid="uid://bruny6ue7hheh" path="res://assert/icon2.png" id="6_743w5"]
+[ext_resource type="Texture2D" uid="uid://b3b1qiru7qthm" path="res://assert/icon3.png" id="7_lcrda"]
+[ext_resource type="Texture2D" uid="uid://daofhganjxb37" path="res://assert/icon5.png" id="9_8sqnc"]
+[ext_resource type="Texture2D" uid="uid://c6r0yb4vi2ou" path="res://assert/icon6.png" id="10_d80mm"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_elnl5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4lwj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqmrf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2o484"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1k22j"]
+
+[sub_resource type="Theme" id="Theme_plcpp"]
+
+[sub_resource type="Theme" id="Theme_fuksa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b8gpj"]
+line_spacing = 4.0
+font = ExtResource("4_wdu4v")
+font_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ca5no"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.435294, 0.772549, 0.113725, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_pmawd"]
+Button/styles/normal = SubResource("StyleBoxFlat_ca5no")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ip17"]
+bg_color = Color(0.819608, 0.376471, 0.25098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_a6ovi"]
+Button/fonts/font = ExtResource("4_wdu4v")
+Button/styles/normal = SubResource("StyleBoxFlat_3ip17")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r0a48")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_phinq")
+expand_mode = 1
+
+[node name="Res" type="Sprite2D" parent="."]
+position = Vector2(168, 416)
+texture = ExtResource("3_lg2iv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Res"]
+texture = SubResource("ImageTexture_elnl5")
+
+[node name="气泡" type="Sprite2D" parent="Res"]
+position = Vector2(188, -204.75)
+scale = Vector2(1.63333, 2.11364)
+texture = ExtResource("4_poqp8")
+
+[node name="ItemList" type="ItemList" parent="Res/气泡"]
+unique_name_in_owner = true
+offset_left = -114.0
+offset_top = -51.0
+offset_right = 110.0
+offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_kuro1")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = ExtResource("5_cn4qv")
+theme_override_styles/panel = ExtResource("5_cn4qv")
+theme_override_styles/hovered = ExtResource("5_cn4qv")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_n4lwj")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_bqmrf")
+theme_override_styles/cursor_unfocused = SubResource("StyleBoxEmpty_2o484")
+theme_override_styles/cursor = SubResource("StyleBoxEmpty_1k22j")
+
+[node name="TextureRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 56.0
+offset_right = 1112.0
+offset_bottom = 616.0
+theme = SubResource("Theme_plcpp")
+color = Color(0.509804, 0.682353, 0.223529, 1)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="TextureRect2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 504.0
+offset_bottom = 488.0
+theme = SubResource("Theme_fuksa")
+theme_override_constants/separation = 10
+
+[node name="奖品名称" type="VBoxContainer" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect2/HBoxContainer/奖品名称"]
+layout_mode = 2
+text = "奖品名称"
+label_settings = SubResource("LabelSettings_b8gpj")
+
+[node name="jpname" type="LineEdit" parent="TextureRect2/HBoxContainer/奖品名称"]
+layout_mode = 2
+
+[node name="品质" type="VBoxContainer" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect2/HBoxContainer/品质"]
+layout_mode = 2
+text = "品质"
+label_settings = SubResource("LabelSettings_b8gpj")
+
+[node name="pz" type="OptionButton" parent="TextureRect2/HBoxContainer/品质"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "传奇"
+popup/item_1/text = "稀有"
+popup/item_1/id = 1
+popup/item_2/text = "史诗"
+popup/item_2/id = 2
+popup/item_3/text = "普通"
+popup/item_3/id = 3
+
+[node name="icon" type="VBoxContainer" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect2/HBoxContainer/icon"]
+layout_mode = 2
+text = "使用图标
+"
+label_settings = SubResource("LabelSettings_b8gpj")
+
+[node name="icon" type="OptionButton" parent="TextureRect2/HBoxContainer/icon"]
+layout_mode = 2
+theme_override_constants/modulate_arrow = 7
+item_count = 5
+popup/item_0/text = "硬币"
+popup/item_0/icon = ExtResource("5_lmqb4")
+popup/item_1/text = "钞票"
+popup/item_1/icon = ExtResource("6_743w5")
+popup/item_1/id = 1
+popup/item_2/text = "炸弹"
+popup/item_2/icon = ExtResource("7_lcrda")
+popup/item_2/id = 2
+popup/item_3/text = "咖啡"
+popup/item_3/icon = ExtResource("9_8sqnc")
+popup/item_3/id = 4
+popup/item_4/text = "运动"
+popup/item_4/icon = ExtResource("10_d80mm")
+popup/item_4/id = 5
+
+[node name="提交" type="HBoxContainer" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TextureRect2/HBoxContainer/提交"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_pmawd")
+text = "保存"
+
+[node name="Button2" type="Button" parent="TextureRect2/HBoxContainer/提交"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_a6ovi")
+text = "清空"
+
+[node name="return" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 47.0
+text = "retun"
+
+[connection signal="item_activated" from="Res/气泡/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_selected" from="Res/气泡/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="TextureRect2/HBoxContainer/提交/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TextureRect2/HBoxContainer/提交/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="return" to="." method="_on_return_pressed"]

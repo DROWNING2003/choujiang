@@ -24,3 +24,7 @@ func _on_guo_finished():
 	print("结束")
 	get_tree().change_scene_to_file("res://kaijiang.tscn")
 	
+
+
+func _on_add_pressed():
+	get_tree().change_scene_to_file("res://add.tscn")
